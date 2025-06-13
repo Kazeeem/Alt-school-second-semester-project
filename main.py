@@ -6,9 +6,6 @@ from routes.user import user_router
 
 app = FastAPI()
 
-print("Available routes:", [route.path for route in user_router.routes])
-print("Operation IDs:", [(route.path, route.operation_id) for route in user_router.routes])
-
 app.include_router(user_router, prefix="/users", tags=["Users"])
 # app.include_router(speaker_router, prefix="/speakers", tags=["Speakers"])
 # app.include_router(event_router, prefix="/events", tags=["Events"])
