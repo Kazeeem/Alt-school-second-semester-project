@@ -9,7 +9,7 @@ from schemas.event_speaker import EventSpeaker
 users: dict[str, User] = {}
 events: dict[str, Event] = {}
 speakers: dict[str, Speaker] = {}
-registration: dict[str, Registration] = {}
+registrations: dict[str, Registration] = {}
 event_speakers: dict[str, EventSpeaker] = {}
 
 speakers_data = [

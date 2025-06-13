@@ -16,19 +16,12 @@ class CreateRegistration(BaseModel):
     registration_date: datetime
     attended: bool = False
 
-class AttendedEvent(BaseModel):
-    attended: bool
-
 class UpdateRegistration(BaseModel):
     name: Optional[str] = None
     email: Optional[str] = None
     registration_date: datetime
 
-class Registrations(BaseModel):
-    registrations: list[Registration]
-
 class Response(BaseModel):
+    success: bool = True
     message: Optional[str] = None
-    has_error: bool = False
-    error_message: Optional[str] = None
-    data: Optional[Registration | Registrations] = None
+    data: Optional[Registration | list[Registration]] = None

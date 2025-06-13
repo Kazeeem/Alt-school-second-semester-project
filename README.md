@@ -16,28 +16,28 @@ This is a Python project that allow users to register for events, track attendan
 ## ✨ What you can do
 
 [//]: # (🔄)
-| Feature                                                     | Routes                            | Status             |
-|-------------------------------------------------------------|-----------------------------------|--------------------|
-| **List all users**                                          | `GET /users/all`                  | ✅ Tested & Trusted |
-| **List specific user**                                      | `GET /users/details/{id}`         | ✅ Tested & Trusted |
-| **Create users**                                            | `POST /users/create`              | ✅ Tested & Trusted |
-| **Update a user**                                           | `PATCH /users/update/{id}`        | ✅ Tested & Trusted |
-| **Deactivate a user**                                       | `PATCH /users/delete/{id}`        | ✅ Tested & Trusted |
-| **List all events**                                         | `GET /events/list`                | ✅ Tested & Trusted |
-| **Get single event**                                        | `GET /events/details/{id}`        | ✅ Tested & Trusted |
-| **Create event**                                            | `POST /events/create`             | ✅ Tested & Trusted |
-| **Update an event**                                         | `PATCH /events/update/{id}`       | ✅ Tested & Trusted |
-| **Close an event**                                          | `PATCH /events/close/{id}`        | ✅ Tested & Trusted |
-| **Assign single/multiple speakers to an event**             | `POST /events/assign-speaker`      |✅ Tested & Trusted|
-| **List the speakers of an event**                           | `GET /events/speakers/{event_id}` | ✅ Tested & Trusted |
-| **List pre-populated speakers**                             | `GET /speakers/list`              | ✅ Tested & Trusted |
-| **Register user for an event, the event must be open**      |                                   | 🔄 In pipeline     |
-| **Only active users can register**                          |                                   | 🔄 In pipeline     |
-| **Users cannot register more than once for the same event** |                                   | 🔄 In pipeline     |
-| **Mark attendance**                                         |                                   | 🔄 In pipeline     |
-| **View registration for specific user**                     |                                   | 🔄 In pipeline     |
-| **View all regitstrations**                                 |                                   | 🔄 In pipeline     |
-| **Filter users who attended at least one event**            |                                   | 🔄 In pipeline     |
+| Feature                                                     | Routes                                                        | Status           |
+|-------------------------------------------------------------|---------------------------------------------------------------|------------------|
+| **List all users**                                          | `GET /users/all`                                              | ✅ Tested & Trusted |
+| **List specific user**                                      | `GET /users/details/{id}`                                     | ✅ Tested & Trusted |
+| **Create users**                                            | `POST /users/create`                                          | ✅ Tested & Trusted |
+| **Update a user**                                           | `PATCH /users/update/{id}`                                    | ✅ Tested & Trusted |
+| **Deactivate a user**                                       | `PATCH /users/delete/{id}`                                    | ✅ Tested & Trusted |
+| **List all events**                                         | `GET /events/list`                                            | ✅ Tested & Trusted |
+| **Get single event**                                        | `GET /events/details/{id}`                                    | ✅ Tested & Trusted |
+| **Create event**                                            | `POST /events/create`                                         | ✅ Tested & Trusted |
+| **Update an event**                                         | `PATCH /events/update/{id}`                                   | ✅ Tested & Trusted |
+| **Close an event**                                          | `PATCH /events/close/{id}`                                    | ✅ Tested & Trusted |
+| **Assign single/multiple speakers to an event**             | `POST /events/assign-speaker`                                 |✅ Tested & Trusted|
+| **List the speakers of an event**                           | `GET /events/speakers/{event_id}`                             | ✅ Tested & Trusted |
+| **List pre-populated speakers**                             | `GET /speakers/list`                                          | ✅ Tested & Trusted |
+| **Register user for an event, the event must be open**      | `POST /event-registration`                                    |✅ Tested & Trusted|
+| **Only active users can register**                          | `POST /event-registration`                                    |✅ Tested & Trusted    |
+| **Users cannot register more than once for the same event** | `POST /event-registration`                                    |✅ Tested & Trusted|
+| **Mark attendance**                                         | `PATCH /event-registration/mark-attendance/{registration_id}` |✅ Tested & Trusted |
+| **View registration for specific user**                     |                                                               | 🔄 In pipeline   |
+| **View all regitstrations**                                 | `GET /event-registration`                                      |✅ Tested & Trusted|
+| **Filter users who attended at least one event**            |                                                               | 🔄 In pipeline   |
 
 ---
 
