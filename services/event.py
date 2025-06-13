@@ -80,6 +80,13 @@ class EventService:
         event_id = event_data.event_id
         speaker_ids = event_data.speaker_ids
 
+        event = events.get(str(event_id))
+        if not event:
+            raise HTTPException(
+                status_code=404,
+                detail=f"Event with the ID: {event_id} does not exist"
+            )
+
         if str(event_id) not in event_speakers:
             event_speakers[str(event_id)] = set()
 

@@ -1,8 +1,8 @@
 from uuid import UUID, uuid4
 from fastapi import HTTPException
 
-from database import registrations, events, users
-from schemas.registration import Registration, CreateRegistration, UpdateRegistration
+from database import registrations, events, users, event_speakers, speakers
+from schemas.registration import Registration, CreateRegistration
 
 
 class EventRegistrationService:
@@ -105,6 +105,54 @@ class EventRegistrationService:
             "message": "Data fetched successfully.",
             "data": specific_user_registrations
         }
+
+    @staticmethod
+    def list_users_who_attended_any_event():
+        filtered_users = {}
+
+        for registration in registrations.values():
+            if registration.attended:
+                event = events.get(registration.event_id)
+                user = users.get(registration.user_id)
+                speakers_of_event = event_speakers.get(registration.event_id, set())
+
+                if not event or not user:
+                    continue
+                if registration.user_id not in filtered_users:
+                    filtered_users[registration.user_id] = {
+                        "user_id": user.id,
+                        "name": user.name,
+                        "email": user.email,
+                        "user_is_active": user.is_active,
+                        "events": []
+                    }
+
+                filtered_users[registration.user_id]["events"].append({
+                    "id": event.id,
+                    "title": event.title,
+                    "location": event.location,
+                    "date": event.date,
+                    "event_is_open": event.is_open,
+                    "event_registration_id": registration.id,
+                    "event_registration_date": registration.registration_date,
+                    "attended_event": registration.attended,
+                    "event_speakers": []
+                })
+
+                for event_speaker in speakers_of_event:
+                    if event_speaker in speakers:
+                        # Loop through the events so we can sort the speakers for each event. Since event is a dictionary, its key will be string (id)
+                        # and not indexed key like lists.
+                        for event_dict in filtered_users[registration.user_id]["events"]:
+                            if event_dict["id"] == event.id:
+                                event_dict["event_speakers"].append(speakers[event_speaker])
+
+        return {
+            "success": True,
+            "message": "Data fetched successfully.",
+            "data": filtered_users
+        }
+
 
     @staticmethod
     def is_event_open(event_id: str):
