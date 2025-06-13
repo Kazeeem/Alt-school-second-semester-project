@@ -2,7 +2,7 @@ from uuid import UUID
 
 from fastapi import APIRouter, HTTPException
 
-from schemas.registration import Registration, CreateRegistration, UpdateRegistration, Response
+from schemas.registration import CreateRegistration, Response
 from services.registration import event_registration_service
 
 registration_router = APIRouter()
@@ -29,3 +29,8 @@ def mark_attendance_for_event(registration_id: UUID):
             detail=f"Event Registration with id: {registration_id} not found"
         )
     return Response(message="Attendance has been marked successfully", data=attendance_marked)
+
+
+@registration_router.get("/user/{user_id}", status_code=200, summary="View registrations for a specific user")
+def view_a_user_registration(user_id: UUID):
+    return event_registration_service.get_all_registrations_of_a_user(user_id)

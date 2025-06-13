@@ -15,7 +15,7 @@ This is a Python project that allow users to register for events, track attendan
 
 ## ✨ What you can do
 
-[//]: # (🔄)
+<!-- 🔄 -->
 | Feature                                                     | Routes                                                        | Status           |
 |-------------------------------------------------------------|---------------------------------------------------------------|------------------|
 | **List all users**                                          | `GET /users/all`                                              | ✅ Tested & Trusted |
@@ -32,11 +32,11 @@ This is a Python project that allow users to register for events, track attendan
 | **List the speakers of an event**                           | `GET /events/speakers/{event_id}`                             | ✅ Tested & Trusted |
 | **List pre-populated speakers**                             | `GET /speakers/list`                                          | ✅ Tested & Trusted |
 | **Register user for an event, the event must be open**      | `POST /event-registration`                                    |✅ Tested & Trusted|
-| **Only active users can register**                          | `POST /event-registration`                                    |✅ Tested & Trusted    |
+| **Only active users can register**                          | `POST /event-registration`                                    |✅ Tested & Trusted |
 | **Users cannot register more than once for the same event** | `POST /event-registration`                                    |✅ Tested & Trusted|
 | **Mark attendance**                                         | `PATCH /event-registration/mark-attendance/{registration_id}` |✅ Tested & Trusted |
-| **View registration for specific user**                     |                                                               | 🔄 In pipeline   |
-| **View all regitstrations**                                 | `GET /event-registration`                                      |✅ Tested & Trusted|
+| **View registration for specific user**                     | `GET /event-registration/user/{user_id}`                      |✅ Tested & Trusted|
+| **View all regitstrations**                                 | `GET /event-registration`                                     |✅ Tested & Trusted|
 | **Filter users who attended at least one event**            |                                                               | 🔄 In pipeline   |
 
 ---

@@ -82,6 +82,31 @@ class EventRegistrationService:
         return registration
 
     @staticmethod
+    def get_all_registrations_of_a_user(user_id: UUID):
+        specific_user_registrations = []
+
+        for registration in registrations.values():
+            if registration.user_id == str(user_id):
+                event = events.get(registration.event_id)
+                if event:
+                    specific_user_registrations.append({
+                        "registration_id": registration.id,
+                        "event_id": event.id,
+                        "event_title": event.title,
+                        "event_location": event.location,
+                        "event_date": event.date,
+                        "event_is_open": event.is_open,
+                        "event_registration_date": registration.registration_date,
+                        "attended_event": registration.attended
+                    })
+
+        return {
+            "success": True,
+            "message": "Data fetched successfully.",
+            "data": specific_user_registrations
+        }
+
+    @staticmethod
     def is_event_open(event_id: str):
         event = events.get(str(event_id))
 
