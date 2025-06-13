@@ -4,11 +4,13 @@ from schemas.user import User
 from schemas.event import Event
 from schemas.speaker import Speaker
 from schemas.registration import Registration
+from schemas.event_speaker import EventSpeaker
 
 users: dict[str, User] = {}
 events: dict[str, Event] = {}
 speakers: dict[str, Speaker] = {}
 registration: dict[str, Registration] = {}
+event_speakers: dict[str, EventSpeaker] = {}
 
 speakers_data = [
     {"name": "Kazeem Asifat", "topic": "Using Python To Build Aircraft Console"},

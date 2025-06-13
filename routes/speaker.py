@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
 
-from schemas.speaker import Response, Speaker
+from schemas.speaker import Response
 from services.speaker import speaker_service
 
 speaker_router = APIRouter()

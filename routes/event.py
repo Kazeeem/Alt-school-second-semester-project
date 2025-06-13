@@ -2,6 +2,7 @@ from uuid import UUID
 from fastapi import APIRouter, HTTPException
 from services.event import event_service
 from schemas.event import CreateEvent, UpdateEvent, Response
+from schemas.event_speaker import CreateEventSpeaker, Response as EventSpeakerResponse
 
 event_router = APIRouter()
 
@@ -56,3 +57,19 @@ def delete_event(event_id: UUID):
             detail=f"event with id: {event_id} not found"
         )
     return Response(message="Event has been deleted successfully", data=None)
+
+
+@event_router.get("/speakers/{event_id}", status_code=200, response_model=EventSpeakerResponse, summary="Get all the speakers of an event")
+def get_event_speakers(event_id: UUID):
+    speakers = event_service.get_assigned_speakers_for_event(event_id)
+    return EventSpeakerResponse(message="Success", data=speakers)
+
+
+@event_router.post("/assign-speaker", status_code=200, summary="Assign single or multiple speakers to an event")
+def assign_speaker_to_event(data: CreateEventSpeaker):
+    event_speaker = event_service.assign_speaker_to_event(data)
+    return {
+        "success": True,
+        "message": "Speaker has been successfully assigned to the event.",
+        "data": event_speaker
+    }
