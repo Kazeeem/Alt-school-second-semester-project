@@ -17,17 +17,11 @@ class CreateEvent(BaseModel):
     is_open: bool = True
 
 class UpdateEvent(BaseModel):
-    name: Optional[str] = None
-    email: Optional[str] = None
-
-class CloseEvent(BaseModel):
-    is_open: bool
-
-class Events(BaseModel):
-    events: list[Event]
+    title: Optional[str] = None
+    location: Optional[str] = None
+    date: Optional[datetime] = None
 
 class Response(BaseModel):
+    success: bool = True
     message: Optional[str] = None
-    has_error: bool = False
-    error_message: Optional[str] = None
-    data: Optional[Event | Events] = None
+    data: Optional[Event | list[Event]] = None

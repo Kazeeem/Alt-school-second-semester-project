@@ -4,7 +4,7 @@
 ## 🧾 Project Description
 This is a Python project that allow users to register for events, track attendance, and manage both event information and speaker details.
 
-## ⚙️ Dependencies Used
+## ⚙️ Libraries Used
   - Fast API
   - Pydantic
 

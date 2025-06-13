@@ -12,13 +12,9 @@ class CreateSpeaker(BaseModel):
 
 class UpdateSpeaker(BaseModel):
     name: Optional[str] = None
-    email: Optional[str] = None
-
-class Speakers(BaseModel):
-    speakers: list[Speaker]
+    topic: Optional[str] = None
 
 class Response(BaseModel):
+    success: bool = True
     message: Optional[str] = None
-    has_error: bool = False
-    error_message: Optional[str] = None
-    data: Optional[Speaker | Speakers] = None
+    data: Optional[Speaker | list[Speaker]] = None
