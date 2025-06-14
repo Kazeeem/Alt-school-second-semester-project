@@ -22,44 +22,48 @@ This is a Python project that allow users to register for events, track attendan
 | **List specific user**                                                                                                             | `GET /users/details/{id}`                                     | ✅ Tested & Trusted |
 | **Create users**                                                                                                                   | `POST /users/create`                                          | ✅ Tested & Trusted |
 | **Update a user**                                                                                                                  | `PATCH /users/update/{id}`                                    | ✅ Tested & Trusted |
-| **Deactivate a user**                                                                                                              | `PATCH /users/delete/{id}`                                    | ✅ Tested & Trusted |
+| **Deactivate a user**                                                                                                              | `PATCH /users/deactivate/{id}`                                | ✅ Tested & Trusted |
+| **Delete a user**                                                                                                                  | `DELETE /users/delete/{id}`                                    | ✅ Tested & Trusted|
 | **List all events**                                                                                                                | `GET /events/list`                                            | ✅ Tested & Trusted |
 | **Get single event**                                                                                                               | `GET /events/details/{id}`                                    | ✅ Tested & Trusted |
 | **Create event**                                                                                                                   | `POST /events/create`                                         | ✅ Tested & Trusted |
 | **Update an event**                                                                                                                | `PATCH /events/update/{id}`                                   | ✅ Tested & Trusted |
 | **Close an event**                                                                                                                 | `PATCH /events/close/{id}`                                    | ✅ Tested & Trusted |
-| **Assign single/multiple speakers to an event**                                                                                    | `POST /events/assign-speaker`                                 |✅ Tested & Trusted|
+| **Delete an event**                                                                                                                | `DELETE /events/delete/{id}`                                  |✅ Tested & Trusted |
 | **List the speakers of an event**                                                                                                  | `GET /events/speakers/{event_id}`                             | ✅ Tested & Trusted |
+| **Assign single/multiple speakers to an event**                                                                                    | `POST /events/assign-speaker`                                 |✅ Tested & Trusted|
 | **List pre-populated speakers**                                                                                                    | `GET /speakers/list`                                          | ✅ Tested & Trusted |
 | **Register user for an event (Criterias: the event must be open, only active users can register, prevent duplicate registration)** | `POST /event-registration`                                    |✅ Tested & Trusted|
 | **Mark attendance**                                                                                                                | `PATCH /event-registration/mark-attendance/{registration_id}` |✅ Tested & Trusted |
 | **View registration for specific user**                                                                                            | `GET /event-registration/user/{user_id}`                      |✅ Tested & Trusted|
 | **View all regitstrations**                                                                                                        | `GET /event-registration`                                     |✅ Tested & Trusted|
-| **Filter users who attended at least one event**                                                                                   | `GET /event-registration/users/attend-any`                     |✅ Tested & Trusted   |
+| **Filter users who attended at least one event**                                                                                   | `GET /event-registration/users/attend-any`                    |✅ Tested & Trusted  |
 
 ---
 
 ## 🚀 Setup for local development or testing
 
+#### 1. Clone & move in
 ```bash
-# 1. Clone & move in
 git clone https://github.com/Kazeeem/Alt-school-second-semester-project.git
+```
+
+#### 2. Go into the cloned project
+```bash
 cd Alt-school-second-semester-project
 ```
 
+#### 3. Create env & install dependencies
 ```bash
-# 2. Create env & install dependencies
 python -m venv venv && source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
+#### 4. Run dev server
 ```bash
-# 3. Run dev server
 uvicorn main:app --reload
 ```
-
+#### 5. Open docs - Copy and paste the URL below into your browser
 ```bash
-# 4. Open docs
-# 👉 http://127.0.0.1:8000/docs
-- Copy and paste the URL below into your browser
+http://127.0.0.1:8000/docs
 ```
